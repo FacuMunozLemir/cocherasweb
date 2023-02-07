@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { getItems } from "../../services/firestore";
+import { getItems, getItemsByDomain } from "../../services/firestore";
+import Filtro from "../Filtro/filtro";
 import ListaVehiculos from "../ListaVehiculos/ListaVehiculos";
 import "./contenedorlistavehiculos.css";
 
 function ContenedorListaVehiculos({ itemData }) {
   const [data, setData] = useState([]);
+  const [busqueda2, setBusqueda2] = useState();
+  const [arreglo, setArreglo] = useState([]);
+  let datos;
 
   useEffect(() => {
-    getItems().then((respuesta) => setData(respuesta));
-  }, []);
+    if (busqueda2 == null || busqueda2 == "") {
+      getItems().then((respuesta) => setData(respuesta));
+    } else {
+      getItemsByDomain(busqueda2).then((respuesta) => setData(respuesta));
+    }
+  }, [busqueda2]);
+
+  function filtrado(busqueda) {
+    setBusqueda2(busqueda);
+  }
 
   return (
     <div className="listContainer">
+      <Filtro onBusqueda={filtrado} />
       <ListaVehiculos itemData={data} />
     </div>
   );

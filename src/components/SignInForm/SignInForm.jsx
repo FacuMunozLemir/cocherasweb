@@ -13,15 +13,6 @@ function SignInForm() {
     tipovehiculo: "AUTO",
   });
 
-  // function handleSelect(e) {
-  //   let name = e.target.name;
-  //   const valor = e.target.value;
-
-  //   const newDataForm = { ...dataForm };
-  //   newDataForm[name] = valor;
-  //   setDataForm(newDataForm);
-  // }
-
   function inputChangeHandler(evt) {
     let name = evt.target.name;
     let value = evt.target.value.toUpperCase();

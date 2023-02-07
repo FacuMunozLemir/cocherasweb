@@ -40,8 +40,41 @@ export async function getItems() {
     let docFormateado = { ...documento.data(), id: documento.id };
     return docFormateado;
   });
-  console.log(dataDocs);
   return dataDocs;
+}
+
+//Traemos vehículos con patente coincidente
+export async function getItemsByDomain(pat) {
+  const miColeccion = collection(firestore, "porhora");
+  let snapshotDB = await getDocs(miColeccion);
+
+  let dataDocs = snapshotDB.docs.map((documento) => {
+    let docFormateado = { ...documento.data(), id: documento.id };
+    return docFormateado;
+  });
+
+  let dataDocs2 = [];
+  let string;
+  let prodId;
+  let bool;
+  let prodIdIndex;
+
+  dataDocs.forEach((element) => {
+    string = element["patente"];
+    prodId = dataDocs2.find((el) => el.id == element["id"]);
+    prodIdIndex = dataDocs.indexOf(element);
+    bool = string.includes(pat);
+
+    if (bool == true) {
+      if (prodId != undefined) {
+        dataDocs2[prodIdIndex] = element;
+      } else {
+        dataDocs2.push(element);
+      }
+    }
+  });
+
+  return dataDocs2;
 }
 
 export default firestore;
