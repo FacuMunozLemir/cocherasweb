@@ -17,9 +17,8 @@
 }
 
 .NavBar--logo h2 {
-
-  padding-left: 5rem;
-  font-size: 1.7rem;
+  margin-left: 2rem;
+  font-size: 1.5rem;
 }
 
 .NavBar--logo h2 a {
@@ -28,7 +27,7 @@
 }
 
 .NavBar--items {
-  padding-right: 5rem;
+  padding-right: 2rem;
   height: 100%;
   display: flex;
   align-items: center;
@@ -36,8 +35,8 @@
 }
 
 .NavBar--items a {
-  margin-left: 5rem;
-  font-size: 1.3rem;
+  margin-left: 2.5rem;
+  font-size: 1.2rem;
   text-decoration: none;
   color: rgb(255, 255, 255);
   font-weight: 400;
@@ -45,4 +44,33 @@
 
 .NavBar--items a:hover {
   font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .NavBar--logo h2 {
+    margin-left: 1rem;
+    font-size: 1.3rem;
+  }
+  .NavBar--items a {
+    margin-left: 2rem;
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .NavBar {
+    flex-direction: column;
+    height: auto;
+  }
+  .NavBar--logo {
+    /* display: none; */
+  }
+  .NavBar--items {
+    padding-right: 0rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .NavBar--items a {
+    margin-left: 0rem;
+  }
 }

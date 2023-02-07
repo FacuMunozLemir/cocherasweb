@@ -23,9 +23,9 @@ function ContenedorListaVehiculos() {
   return (
     <div className="listContainer">
       <Filtro onBusqueda={filtrado} />
-        <div className="table">
+      <div className="table">
         <ListaVehiculos itemData={data} />
-        </div>
+      </div>
     </div>
   );
 }

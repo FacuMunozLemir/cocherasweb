@@ -2,12 +2,12 @@ import React from "react";
 import "./vehiculos.css";
 import { useNavigate } from "react-router-dom";
 //Import SWAL2
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 //Import firestore
 import { deleteItems } from "../../services/firestore";
 
-const MySwal = withReactContent(Swal)
+const MySwal = withReactContent(Swal);
 
 function Vehiculos(props) {
   const navigate = useNavigate();
@@ -69,45 +69,45 @@ function Vehiculos(props) {
     }
   }
 
-  function sweetAlertYN(pagar){
+  function sweetAlertYN(pagar) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
       },
-      buttonsStyling: true
-    })
-    
-    swalWithBootstrapButtons.fire({
-      title: 'Está seguro?',
-      text: `El monto a abonar es: $ ${pagar}`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'SI, cobrar',
-      cancelButtonText: 'NO, cancelar!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        deleteItems(props.id);
-        swalWithBootstrapButtons.fire(
-          'Listo!',
-          'Se ha marcado la salida del vehículo',
-          'success'
-        );
-        // navigate("/");        
-     
-        
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Operación cancelada',
-          'Te salvaste perry',
-          'error'
-        )
-      }
-    })
+      buttonsStyling: true,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Está seguro?",
+        text: `El monto a abonar es: $ ${pagar}`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "SI, cobrar",
+        cancelButtonText: "NO, cancelar!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          deleteItems(props.id);
+          swalWithBootstrapButtons.fire(
+            "Listo!",
+            "Se ha marcado la salida del vehículo",
+            "success"
+          );
+          // navigate("/");
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Operación cancelada",
+            "Te salvaste perry",
+            "error"
+          );
+        }
+      });
   }
 
   return (
