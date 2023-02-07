@@ -67,7 +67,7 @@ function Vehiculos(props) {
     <div className="filaDatosVehiculo">
       <a>{props.patente}</a>
       <p>
-        Hora entrada: <b>{props.horae}</b>
+        Entrada: <b>{props.horae}</b>
       </p>
       <button onClick={patenteHandler}>Cobrar</button>
     </div>
