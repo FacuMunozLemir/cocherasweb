@@ -2,8 +2,13 @@ import React from "react";
 import "./signinform.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+//Import firestore
 import { createNewHourVehicle } from "../../services/firestore";
+//Import SWAL2
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 function SignInForm() {
   const navigate = useNavigate();
@@ -35,9 +40,11 @@ function SignInForm() {
       fechasalida: null,
     };
 
-    createNewHourVehicle(datosporhora).then(navigate(`/`));
+    createNewHourVehicle(datosporhora);
 
-    alert("El vehículo se cargo correctamente");
+    MySwal.fire(  'Exito!',
+    'El vehículo se ha cargado exitosamente',
+    'succes');
   }
 
   return (

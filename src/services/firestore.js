@@ -9,6 +9,7 @@ import {
   query,
   where,
   addDoc,
+  deleteDoc,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -41,6 +42,16 @@ export async function getItems() {
     return docFormateado;
   });
   return dataDocs;
+}
+
+//Eliminar vehiculo
+export async function deleteItems(id) {
+  const docRef = doc(firestore, "porhora", id);
+
+  deleteDoc(docRef)
+  .then(() => {
+      window.location.reload();
+  });
 }
 
 //Traemos vehículos con patente coincidente

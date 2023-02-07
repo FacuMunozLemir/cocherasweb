@@ -1,7 +1,13 @@
 import React from "react";
 import "./vehiculos.css";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+//Import SWAL2
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+//Import firestore
+import { deleteItems } from "../../services/firestore";
+
+const MySwal = withReactContent(Swal)
 
 function Vehiculos(props) {
   const navigate = useNavigate();
@@ -43,7 +49,7 @@ function Vehiculos(props) {
       } else {
         pagar = hora * 200;
       }
-      alert("El monto a pagar es: $" + pagar);
+      sweetAlertYN(pagar);
     }
     if (props.tipoV == "CAMIONETA") {
       if (minutos > 5) {
@@ -51,7 +57,7 @@ function Vehiculos(props) {
       } else {
         pagar = hora * 250;
       }
-      alert("El monto a pagar es: $" + pagar);
+      sweetAlertYN(pagar);
     }
     if (props.tipoV == "MOTO") {
       if (minutos > 5) {
@@ -59,8 +65,49 @@ function Vehiculos(props) {
       } else {
         pagar = hora * 100;
       }
-      alert("El monto a pagar es: $" + pagar);
+      sweetAlertYN(pagar);
     }
+  }
+
+  function sweetAlertYN(pagar){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: true
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Está seguro?',
+      text: `El monto a abonar es: $ ${pagar}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'SI, cobrar',
+      cancelButtonText: 'NO, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteItems(props.id);
+        swalWithBootstrapButtons.fire(
+          'Listo!',
+          'Se ha marcado la salida del vehículo',
+          'success'
+        );
+        // navigate("/");        
+     
+        
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Operación cancelada',
+          'Te salvaste perry',
+          'error'
+        )
+      }
+    })
   }
 
   return (
