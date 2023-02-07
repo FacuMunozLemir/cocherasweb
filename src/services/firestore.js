@@ -60,9 +60,9 @@ export async function getItemsByDomain(pat) {
   let prodIdIndex;
 
   dataDocs.forEach((element) => {
-    string = element["patente"];
     prodId = dataDocs2.find((el) => el.id == element["id"]);
     prodIdIndex = dataDocs.indexOf(element);
+    string = element["patente"];
     bool = string.includes(pat);
 
     if (bool == true) {

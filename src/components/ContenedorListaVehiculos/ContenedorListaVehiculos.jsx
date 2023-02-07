@@ -4,11 +4,9 @@ import Filtro from "../Filtro/filtro";
 import ListaVehiculos from "../ListaVehiculos/ListaVehiculos";
 import "./contenedorlistavehiculos.css";
 
-function ContenedorListaVehiculos({ itemData }) {
+function ContenedorListaVehiculos() {
   const [data, setData] = useState([]);
   const [busqueda2, setBusqueda2] = useState();
-  const [arreglo, setArreglo] = useState([]);
-  let datos;
 
   useEffect(() => {
     if (busqueda2 == null || busqueda2 == "") {
