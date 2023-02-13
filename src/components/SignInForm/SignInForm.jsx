@@ -1,18 +1,10 @@
 import React from "react";
 import "./signinform.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 //Import firestore
 import { createNewHourVehicle } from "../../services/firestore";
-//Import SWAL2
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-
-const MySwal = withReactContent(Swal)
 
 function SignInForm() {
-  const navigate = useNavigate();
-
   const [dataForm, setDataForm] = useState({
     patente: "",
     tipovehiculo: "AUTO",
@@ -41,15 +33,13 @@ function SignInForm() {
     };
 
     createNewHourVehicle(datosporhora);
-
-    MySwal.fire(  'Exito!',
-    'El vehículo se ha cargado exitosamente',
-    'succes');
+    document.getElementById("inputPatente").value = "";
   }
 
   return (
     <form className="formularioCarga" onSubmit={handleSubmit}>
       <input
+        id="inputPatente"
         type="text"
         name="patente"
         placeholder="PATENTE"

@@ -1,21 +1,12 @@
 import React from "react";
 import "./vehiculos.css";
-import { useNavigate } from "react-router-dom";
 //Import SWAL2
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 //Import firestore
 import { deleteItems } from "../../services/firestore";
 
-const MySwal = withReactContent(Swal);
-
 function Vehiculos(props) {
-  const navigate = useNavigate();
-
   function patenteHandler() {
-    //Obtenemos el tipo de vehículo
-    let tipoVehiculo = props.tipo;
-
     //Obtenemos los datos de hora de entrada
     let horaEntrada = props.horae;
     let horasTotal = horaEntrada.split(":");
@@ -43,7 +34,7 @@ function Vehiculos(props) {
 
   function calcularPrecio(hora, minutos) {
     let pagar;
-    if (props.tipoV == "AUTO") {
+    if (props.tipoV === "AUTO") {
       if (minutos > 5) {
         pagar = hora * 200 + 200;
       } else {
@@ -51,7 +42,7 @@ function Vehiculos(props) {
       }
       sweetAlertYN(pagar);
     }
-    if (props.tipoV == "CAMIONETA") {
+    if (props.tipoV === "CAMIONETA") {
       if (minutos > 5) {
         pagar = hora * 250 + 250;
       } else {
@@ -59,7 +50,7 @@ function Vehiculos(props) {
       }
       sweetAlertYN(pagar);
     }
-    if (props.tipoV == "MOTO") {
+    if (props.tipoV === "MOTO") {
       if (minutos > 5) {
         pagar = hora * 100 + 100;
       } else {

@@ -1,6 +1,6 @@
 .filaDatosVehiculo {
   width: 100%;
-  max-width: 40rem;
+  max-width: 50rem;
   padding: 0rem 0.5rem;
   display: flex;
   align-items: center;
@@ -40,7 +40,7 @@
   border-radius: 5em;
 }
 
-@media screen and (max-width: 380px) {
+/* @media screen and (max-width: 380px) {
   .filaDatosVehiculo a {
     font-size: 1.2rem;
   }
@@ -52,4 +52,4 @@
   .filaDatosVehiculo button {
     font-size: 1.3rem;
   }
-}
+} */
