@@ -92,11 +92,7 @@ function Vehiculos(props) {
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
-          swalWithBootstrapButtons.fire(
-            "Operación cancelada",
-            "Te salvaste perry",
-            "error"
-          );
+          swalWithBootstrapButtons.fire("Operación cancelada", "", "error");
         }
       });
   }

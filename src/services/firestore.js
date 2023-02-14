@@ -31,7 +31,7 @@ const firestore = getFirestore(app);
 export async function createNewHourVehicle(vehicleData) {
   const collectionRef = collection(firestore, "porhora");
   let repetidos = await getItemsByDomain(vehicleData.patente);
-  if (repetidos.length === 0) {
+  if (repetidos.length == 0) {
     let response = await addDoc(collectionRef, vehicleData);
     MySwal.fire("Exito!", "El vehículo se ha cargado exitosamente", "success");
     return response.id;
@@ -78,13 +78,13 @@ export async function getItemsByDomain(pat) {
   let prodIdIndex;
 
   dataDocs.forEach((element) => {
-    prodId = dataDocs2.find((el) => el.id === element["id"]);
+    prodId = dataDocs2.find((el) => el.id == element["id"]);
     prodIdIndex = dataDocs.indexOf(element);
     string = element["patente"];
     bool = string.includes(pat);
 
-    if (bool === true) {
-      if (prodId !== undefined) {
+    if (bool == true) {
+      if (prodId != undefined) {
         dataDocs2[prodIdIndex] = element;
       } else {
         dataDocs2.push(element);
