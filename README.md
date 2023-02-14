@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Nombre del proyecto: Mi cochera app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Mi cochera app V1.0.0
 
-## Available Scripts
+...
 
-In the project directory, you can run:
+## Acerca del proyecto
 
-### `npm start`
+Proyecto creado especialmente para la materia Administración de Proyectos de la carrera Ingeniería en Informática de la "Universidad Católica Santiago del Estero" con el objetivo de mostrar el uso de ReactJs en combinación con una base de datos No Sql como es Firebase.
+Este proyecto simula el cobro a vehículos por hora de un estacionamiento privado.
+...
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Funcionalidades principales
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-
+- Alta de vehículos: se podrá cargar un vehículo con patente y tipo (auto, camioneta, moto) y el sistema controlará que el vehículo (buqeda por patente) no se encuentre cargado en el sistema.
+- La patentete puede ser ingresada en minúsculas ya que el sistema guarda siempre toda patente como mayúsucula.
+- Consultar vehículos estacionados y filtro dinámico. La idea del filtro dinámico es que a medida que el usuario vaya escribiendo la patente que busca, en la lista debajo del filtro vayan apreciendo en tiempo real los resultado coincidentes.
+- Cobrar: el usuario podrá marcar salida de un vehículo, para esta operación el sistema calculará automáticamente el precio a abonar por parte del cliente.
 
-### `npm test`
+...
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Flujo de interacción del usuario
 
-### `npm run build`
+1. El usuario Ingresa una patente.
+2. El usuario selecciona el típo de vehículo que va a ingresar.
+3. El usuario clickea el botón "Cargar vehículo" para dar de alta un vehículo entrante.
+4. En la pestaña "cobrar" del menú de navegación, el usuario puede acceder a la lísta de vehículos estacionados actualmente, teniendo la posibilidad de filtrar por patente.
+5. Para finalizar el usuario puede marcar la salida de un vehículo dando click en el botón cobrar justo a la par del vehículo al que desea dar salida.
+6. Se mostrará un cartel de confirmación con el precio a abonar por parte del cliente de acuerdo al tiempo que estuvo en el estacionamiento
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### IMPORTANTE: en caso de haber permanecido menos de 5 minutos el auto no deberá abonar ningún monto.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+...
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ¿Cómo usar el proyecto?
 
-### `npm run eject`
+### Clonar el repositorio
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+$ git clone https://github.com/FacuMunozLemir/cocherasweb
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Ir al repositorio
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+$ cd cocherasweb
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Instalar las dependencias
 
-## Learn More
+$ npm install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Ejecutar la app
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+$npm start
 
-### Code Splitting
+...
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Dependencias aparte del proyecto
 
-### Analyzing the Bundle Size
+La idea de esta sección es dejar mostrado cuales son las otras dependencias que el proyecto podría llegar a necesitar, junto con sus versiones, en caso que no funcione una vez clonado
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.7.0",
+    "@uiball/loaders": "^1.2.6",
+    "firebase": "^9.16.0",
+    "sweetalert2": "^11.7.1",
+    "sweetalert2-react-content": "^5.0.7",
