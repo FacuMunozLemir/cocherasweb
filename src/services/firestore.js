@@ -57,7 +57,7 @@ export async function deleteItems(id) {
   const docRef = doc(firestore, "porhora", id);
 
   deleteDoc(docRef).then(() => {
-    window.location.reload();
+    // window.location.reload();
   });
 }
 

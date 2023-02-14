@@ -20,7 +20,7 @@ function ContenedorListaVehiculos() {
         .then((respuesta) => setData(respuesta))
         .finally(() => setIsLoading(false));
     }
-  }, [busqueda2]);
+  }, [busqueda2, data]);
 
   function filtrado(busqueda) {
     setBusqueda2(busqueda);
