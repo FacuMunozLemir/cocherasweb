@@ -4,6 +4,7 @@ import "./filtro.css";
 function Filtro({ onBusqueda }) {
   const [busqueda, setBusqueda] = useState("");
 
+
   useEffect(() => {
     onBusqueda(busqueda);
   }, [busqueda]);

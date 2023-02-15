@@ -13,7 +13,7 @@ function SignInForm() {
   function inputChangeHandler(evt) {
     let name = evt.target.name;
     let value = evt.target.value.toUpperCase();
-
+    value = value.split(" ").join("");
     const newDataForm = { ...dataForm };
     newDataForm[name] = value;
     setDataForm(newDataForm);
@@ -40,6 +40,7 @@ function SignInForm() {
     <form className="formularioCarga" onSubmit={handleSubmit}>
       <input
         id="inputPatente"
+        maxLength={7}
         type="text"
         name="patente"
         placeholder="PATENTE"

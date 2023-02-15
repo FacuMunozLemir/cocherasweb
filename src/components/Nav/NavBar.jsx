@@ -11,7 +11,7 @@ function NavBar() {
       <div className="NavBar--items">
         <Link to="/">Inicio</Link>
         <Link to="/cobrar">Cobrar</Link>
-        <Link to="/">Configuración</Link>
+        <Link to="/configuracion">Configuración</Link>
       </div>
     </header>
   );
